@@ -14,7 +14,7 @@ class Setting {
     
     let name: String
     let image: UIImage?
-    let isSet: Bool
+    var isSet: Bool
     
     // MARK - Initializers
     

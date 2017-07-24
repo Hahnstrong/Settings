@@ -24,9 +24,27 @@ class SettingsTableViewController: UITableViewController {
         // let setting = someSetting
         let setting = SettingsController.shared.setting(at: indexPath)
         cell?.updateViews(with: setting)
-        
+        cell?.delegate = self
         
         return cell ?? UITableViewCell()
+    }
+    
+}
+
+// MARK: - SettingTableViewCell Delegate
+
+extension SettingsTableViewController: SettingTableViewCellDelegate {
+    
+    func settingValueChanged(_ cell: SettingTableViewCell, selected: Bool) {
+        // Change isSet on setting
+        // Which setting to change?
+        guard let cellIndexPath = tableView.indexPath(for: cell) else { return }
+        let setting = SettingsController.shared.setting(at: cellIndexPath)
+        tableView.beginUpdates()
+        setting.isSet = selected
+        tableView.reloadRows(at: [cellIndexPath], with: .automatic)
+        tableView.endUpdates()
+        
     }
     
 }

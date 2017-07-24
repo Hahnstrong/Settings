@@ -4,6 +4,7 @@
 
 .DS_Store
 *.xcuserstate
+*.pbxproj
 
 ## Build generated
 build/
